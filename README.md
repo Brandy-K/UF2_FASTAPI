@@ -25,15 +25,18 @@ Aquesta imatge mostra el mètode GET a Postman, mostrant una resposta 404 que in
 ![Postman 404 Response](capturesfastapi/postman404response.png)
 
 ## Captura5
-![Swagger HTTPException Response](capturesfastapi/swaggerHTTPException.png)
 
 Aquesta imatge mostra el mètode GET a Swagger, que mostra una resposta HTTPException que indica que no s'ha trobat la informació sol·licitada.
 
+![Swagger HTTPException Response](capturesfastapi/swaggerHTTPException.png)
+
 ## captura6
+
+Aquesta imatge mostra el mètode GET a Postman, que mostra una resposta HTTPException que indica que no s'ha trobat la informació sol·licitada.
 
 ![Postman HTTPException Response](capturesfastapi/postmanHTTPException.png)
 
-Aquesta imatge mostra el mètode GET a Postman, que mostra una resposta HTTPException que indica que no s'ha trobat la informació sol·licitada.
+
 
 ## HTTP POST
 
