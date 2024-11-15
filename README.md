@@ -1,6 +1,6 @@
 ## HTTP GET
 Aquestes imatges mostran el mètode GET a Swagger, que retorna un diccionari.
-![Swagger GET1](capturesfastapi/swaggerGET1)
+![Swagger GET1](UF2_FASTAPI/capturesfastapi/swaggerGET1)
 ![Swagger GET2](capturesfastapi/swaggerGET2)
 
 ## Captura2
