@@ -51,10 +51,10 @@ async def get_employee(employee_id: int):
 
 # get method with HTTPException
 @app.get("/employee/{employee_id}")
-async def get_employee(employee_id: int):
+async def get_employee_data(employee_id: int):
     employee = data_employee.get(employee_id)
 # If the method doesn't detect an employee return HTTPException error
     if not employee:
-        raise HTTPException(status_code=404, detail={"detail": "Employee not found"})
+        raise HTTPException(status_code=404, detail="Detail not found")
 
     return {"employee": employee}
