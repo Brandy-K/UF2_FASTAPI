@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
@@ -6,7 +6,7 @@ from pydantic import BaseModel
 app = FastAPI()
 
 
-# Employee model for normal responses
+# BaseModel
 class Employee(BaseModel):
     employee_id: int
     name: str
@@ -38,13 +38,23 @@ async def create_item(employee: Employee):
     return {"employee": employee}
 
 
+# get method with 404 response
 @app.get("/employee/{employee_id}")
 async def get_employee(employee_id: int):
     employee = data_employee.get(employee_id)
-
+# If the method doesn't detect an employee return 404 error
     if not employee:
         return JSONResponse(status_code=404, content={"detail": "Employee not found"})
 
     return {"employee": employee}
 
 
+# get method with HTTPException
+@app.get("/employee/{employee_id}")
+async def get_employee(employee_id: int):
+    employee = data_employee.get(employee_id)
+# If the method doesn't detect an employee return HTTPException error
+    if not employee:
+        raise HTTPException(status_code=404, detail={"detail": "Employee not found"})
+
+    return {"employee": employee}
