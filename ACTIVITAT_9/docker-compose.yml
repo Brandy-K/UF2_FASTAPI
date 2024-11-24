@@ -3,20 +3,20 @@ version: '3.1'
 services:
   db:
     image: postgres:13
-    container_name: fastapi_db
+    container_name: db
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=pass_postgres
-      - POSTGRES_USER=user_postgresp
+      - POSTGRES_USER=user_postgres
     ports:
-      - "5430:5432"
+      - "5432:5432"
     volumes:
       - local_pgdata:/var/lib/postgresql/data
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin
     ports:
-      - "81:80"
+      - "80:80"
     environment:
       - PGADMIN_DEFAULT_EMAIL=roger.sobrino@xtec.cat
       - PGADMIN_DEFAULT_PASSWORD=roger123

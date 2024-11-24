@@ -1,9 +1,7 @@
 import psycopg2
-from psycopg2 import sql
 
 
-def get_db_connection():
-
+def get_connection():
     try:
         conn = psycopg2.connect(
             database='postgres',
@@ -13,6 +11,6 @@ def get_db_connection():
             port='5432'
         )
         return conn
-    except psycopg2.Error as e:
-        print("Error connecting to the database:", e)
+    except Exception as e:
+        print("Database connection error:", e)
         raise
