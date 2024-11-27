@@ -1,43 +1,16 @@
-import psycopg2
-import csv
-from db_connect import get_connection
+import db_connect
+import pandas as pd
 
-# File path to your CSV
-csv_file = 'paraules_temàtica_penjat.csv'
 
-try:
-    # Connect to the database
-    conn = get_connection()
-    cursor = conn.cursor()
+def csv_to_json():
 
-    with open(csv_file, mode="r", encoding="utf-8") as file:
-        csv_reader = csv.reader(file)
-        for row in csv_reader:
-            print(row)  # Print each row to understand the structure
+    df = pd.read_csv("paraules_temàtica_penjat.csv")
 
-    # Open the CSV file
-    dict_list = []
-    with open(csv_file, mode="r") as file:
-        csv_reader = csv.reader(file)
-        next(csv_reader)
-        for rows in csv_reader:
-            dict_list.append({'WORD': rows[0], 'THEME': rows[1]})
+    d = df.to_dict(orient='list')
+    return d
 
-        # Insert data row by row
-        for item in dict_list:
-            sql = "INSERT INTO taulapenjat(word, theme) VALUES (%s, %s)"
-            val = item['WORD'], item['THEME']
-            cursor.execute(sql, val)
 
-    # Commit changes
-    conn.commit()
-    print("Data added successfully!")
+data = csv_to_json()
 
-except Exception as e:
-    print("Error:", e)
-
-finally:
-    # Close the database connection
-    if conn:
-        cursor.close()
-        conn.close()
+for i in range(500):
+    db_connect.insert_data(i, data)
