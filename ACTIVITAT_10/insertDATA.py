@@ -14,3 +14,4 @@ data = csv_to_json()
 
 for i in range(500):
     db_connect.insert_data(i, data)
+
